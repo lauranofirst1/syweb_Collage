@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            height: 100vh;
+            background: url(img/배경이미지1.png) no-repeat center;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #c1 {
+            position: absolute;
+            z-index: 1;
+            display: block;
+            width: 1200px;
+            top: 400px;
+            left: 900px;
+            cursor: pointer;
+        }
+
+        #c2 {
+            position: absolute;
+            z-index: 2;
+            display: none;
+            width: 1200px;
+            top: 400px;
+            left: 900px;
+            cursor: pointer;
+        }
+
+        #modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+        }
+
+        #modal-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        
+        #menu {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          background-color: #333;
+          overflow: hidden;
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+        }
+
+        #menu li {
+          float: left;
+        }
+
+        #menu li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+
+        #menu li a:hover {
+          background-color: #111;
+        }
+
+        .active {
+          background-color: #4CAF50;
+        }
+    </style>
+    <script>
+        function toggleImages() {
+            var c1 = document.getElementById("c1");
+            var c2 = document.getElementById("c2");
+            
+            if (c1.style.display === "none") {
+                c1.style.display = "block";
+                c2.style.display = "none";
+            } else {
+                c1.style.display = "none";
+                c2.style.display = "block";
+            }
+        }
+
+        function toggleModal() {
+            var modal = document.getElementById("modal");
+            modal.style.display = "flex";
+        }
+
+        function closeModal() {
+            var modal = document.getElementById("modal");
+            modal.style.display = "none";
+        }
+        
+        $(document).ready(function() {
+          $('#menu li a').click(function() {
+            $('#menu li a').removeClass('active');
+            $(this).addClass('active');
+          });
+        });
+    </script>
+</head>
+<body>
+    <img src="img/click.png" id="c1" onmouseover="toggleImages()" onclick="toggleModal()">
+    <img src="img/click2.png" id="c2" onmouseover="toggleImages()" onclick="toggleModal()">
+
+    <div id="modal">
+        <div id="modal-content">
+            <!-- Add your image registration form or content here -->
+            <h1>이미지 등록</h1>
+            <p>당신의 작품을 등록해주세요!</p>
+            <input type="file">
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+    
+    <div>
+        <ul id="menu">
+          <li><a href="pj1-2.html">Home</a></li>
+          <li><a href="pj5-tree.html">tree</a></li>
+          <li><a href="pj3-gal.html" class="active">gallery</a></li>
+          <li><a href="pj6-re.html">review</a></li>
+        </ul>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
+</html>

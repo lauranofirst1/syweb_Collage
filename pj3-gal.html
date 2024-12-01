@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: url(img/gal.png);
+      position: relative;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    
+    .photo-container {
+      position: relative;
+     
+    }
+
+    .photo {
+      position: absolute;
+    }
+
+    .photo img {
+      width: 200px;
+      height: auto;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 10px;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+    
+    #menu {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      background-color: #333;
+      overflow: hidden;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+    
+    #menu li {
+      float: left;
+    }
+    
+    #menu li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+    
+    #menu li a:hover {
+      background-color: #111;
+    }
+    
+    .active {
+      background-color: #4CAF50;
+    }
+  </style>
+</head>
+<body>
+  <div class="photo-container">
+    <div class="photo" style="top: 640px; left: 686px; transform: rotate(20deg); z-index: 1; ">
+      <img src="img/p1.jpg" alt="Photo 1" style="width: 650px;">
+      <div class="overlay">Erased de Kooning Drawing<br>로베르트 라우슨 (Robert Rauschenberg)</div>
+    </div>
+    <div class="photo" style="top: 40px; left: 140px; transform: rotate(355deg); z-index: 4; ">
+      <img src="img/p2.png" alt="Photo 1" style="width: 700px;">
+      <div class="overlay">Cut with the Dada Kitchen Knife through the Last Weimar Beer-Belly Cultural Epoch in Germany<br>헤나 메트스-벡</div>
+    </div>
+    <div class="photo" style="top: 170px; left: 2000px; transform: rotate(-10deg); z-index: 2; ">
+      <img src="img/p3.jpg" alt="Photo 1" style="width: 700px;">
+      <div class="overlay">Hurrah, die Butter ist alle!<br>존 하트필드 (John Heartfield)</div>
+    </div>
+    <div class="photo" style="top: 300px; left: 1230px; transform: rotate(10deg); z-index: 3; ">
+      <img src="img/p4.png" alt="Photo 1" style="width: 900px;">
+      <div class="overlay">The Treachery of Images<br>마그리트 (Magritte)</div>
+    </div>
+  </div>
+
+  <div>
+    <ul id="menu">
+      <li><a href="pj1-2.html">Home</a></li>
+      <li><a href="pj5-tree.html">tree</a></li>
+      <li><a href="pj3-gal.html" class="active">gallery</a></li>
+      <li><a href="pj6-re.html">review</a></li>
+    </ul>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const photos = document.querySelectorAll('.photo');
+
+      photos.forEach(photo => {
+        photo.addEventListener('mouseover', () => {
+          photos.forEach(p => {
+            if (p !== photo) {
+              p.style.filter = 'blur(5px)';
+            }
+          });
+
+          photo.querySelector('.overlay').style.opacity = 1;
+        });
+
+        photo.addEventListener('mouseout', () => {
+          photos.forEach(p => {
+            p.style.filter = 'none';
+          });
+
+          photos.forEach(p => {
+            p.querySelector('.overlay').style.opacity = 0;
+          });
+        });
+
+        photo.addEventListener('click', () => {
+          const description = photo.querySelector('.overlay');
+          description.style.position = 'fixed';
+          description.style.top = '50%';
+          description.style.left = '50%';
+          description.style.transform = 'translate(-50%, -50%)';
+        });
+      });
+    });
+
+    $(document).ready(function() {
+      $('#menu li a').click(function() {
+        $('#menu li a').removeClass('active');
+        $(this).addClass('active');
+      });
+    });
+  </script>
+  <script>
+    
+  </script>
+</body>
+</html>

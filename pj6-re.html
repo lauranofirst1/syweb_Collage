@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html {
+            background: url(img/게시판.png);
+            position: relative;
+            height: 100vh;
+            width: 100vw;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .pep {
+            font-size: 50px;
+            width: 2000px;
+            height: 50px;
+            position: absolute;
+            left: 1600px;
+            top: 700px;
+            transform: rotate(10deg);
+        }
+        img.flip-horizontal {
+            position: absolute;
+            left: 2200px;
+            top: 60px;
+            width: 500px;
+        }
+        .overlay-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.3s;
+        }
+        .overlay-container.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        .inp {
+            background-color: white;
+            padding: 20px;
+            z-index: 99999;
+        }
+        .feather-animation {
+            animation: none;
+        }
+        .feather-animation:hover {
+            animation: shake 0.5s linear 2;
+        }
+        @keyframes shake {
+            0%, 100% { transform: rotate(5deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        #menu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+            overflow: hidden;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+        
+        #menu li {
+            float: left;
+        }
+        
+        #menu li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        
+        #menu li a:hover {
+            background-color: #111;
+        }
+        
+        
+    </style>
+    <script>
+        window.onload = function() {
+            var featherImage = document.getElementById('feather-image');
+            var overlayContainer = document.getElementById('overlay-container');
+
+            featherImage.addEventListener('click', function() {
+                overlayContainer.classList.add('active');
+            });
+
+            overlayContainer.addEventListener('click', function(e) {
+                if (e.target === overlayContainer) {
+                    overlayContainer.classList.remove('active');
+                }
+            });
+        };
+        
+        $(document).ready(function() {
+            $('#menu li a').click(function() {
+                $('#menu li a').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+    </script>
+  <title>후기</title>
+</head>
+<body>
+<div class="pep">
+  <h2>후기</h2>
+  <ul>
+    <li>
+      콜라주에 대해서 깊게 알아가요!!<br>
+      <small>작성일: 2023-07-10</small>
+    </li>
+    <li><p></p>
+        저도 작품에 참여해서 기뻐요!<br>
+        <small>작성일: 2023-07-10</small>
+      </li><p></p>
+      <li><p>
+        오늘 하루 행복했습니다~<br>
+        <small>작성일: 2023-07-10</small>
+      </li>
+  </ul>
+</div>
+<img id="feather-image" class="flip-horizontal feather-animation" src="img/Feather.png" 
+style="width: 700px;">
+<div id="overlay-container" class="overlay-container">
+  <div class="inp">
+    <h1>작품 등록, 후기 작성</h1>
+    <form>
+      <label for="photo">사진:</label>
+      <input type="file" id="photo" name="photo"><br><br>
+      <label for="name">이름:</label>
+      <input type="text" id="name" name="name"><br><br>
+      <label for="date">날짜:</label>
+      <input type="date" id="date" name="date"><br><br>
+      <label for="content">내용:</label><br>
+      <textarea id="content" name="content" rows="4" cols="50"></textarea><br><br>
+      <button type="submit">작성 완료</button>
+    </form>
+  </div>
+</div>
+
+<div>
+  <ul id="menu">
+    <li><a href="pj1-2.html">Home</a></li>
+    <li><a href="pj5-tree.html">tree</a></li>
+    <li><a href="pj3-gal.html" class="active">gallery</a></li>
+    <li><a href="pj6-re.html">review</a></li>
+  </ul>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
+</html>

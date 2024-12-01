@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        *{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        body {
+            background: url(img/배경이미지2.png) no-repeat center;
+            position: relative;
+            height: 100vh;
+            background-size: cover;
+            color: white;
+        }
+
+        #title {
+            font-size: 400px;
+            position: absolute;
+            top: -300px;
+            left: 100px;
+        }
+
+        #subtitle1 {
+            font-size: 50px;
+            position: absolute;
+            top: -300px;
+            left: 100px;
+            color: aliceblue;
+        }
+
+        div {
+            font-size: 70px;
+            position: relative;
+            width: 2000px;
+            top: 700px;
+            left: 100px;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+        }
+
+        .overlay-text {
+            font-size: 25px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .contents2 {
+            position: relative;
+        }
+
+        .contents2:hover .overlay {
+            display: block;
+        }
+
+        .next-button {
+            position: fixed;
+            top: 50%;
+            right: 50px;
+            transform: translateY(-50%);
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #menu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+            overflow: hidden;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        #menu li {
+            float: left;
+        }
+
+        #menu li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        #menu li a:hover {
+            background-color: #111;
+        }
+
+        .active {
+            background-color: #4CAF50;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="title">Collage</p>
+    <p id="subtitle1">To glue</p>
+
+    <div class="contents1">헝겊, 비닐, 타일, 나무조각, 종이 등을 붙여 화면을 구성하는 기법</div>
+    <div class="contents2">
+        <span>papiers collés(파피에 콜레)</span>
+        <div class="overlay">
+            <div class="overlay-text">
+                1911년경 입체파 화가였던 피카소와 브라크로부터의 탄생. 이 둘은 화면의 미적인 구성을 위한 조형의 수단으로 여러 매체를 차용하였지만, 1차 세계 대전 중에 다다이즘에 발생한 콜라주 기법은 사회적 풍자를 목적으로 한 풍자적 몽타주로 발전.
+            </div>
+        </div>
+    </div>
+    <div class="contents3">
+        파피에 콜레와 콜라주의 차이점
+        파피에 콜레는 작품에 종이류의 물체만 사용하는 반면 콜라주는 실, 모발, 철사 등 이질적인 재료를 사용한다.
+    </div>
+
+    <div>
+        <ul id="menu">
+            <li><a href="pj1-2.html">Home</a></li>
+            <li><a href="pj5-tree.html">tree</a></li>
+            <li><a href="pj3-gal.html">gallary</a></li>
+            <li><a href="pj6-re.html">review</a></li>
+        </ul>
+    </div>
+
+    <button class="next-button" onclick="location.href='pj1-3.html'">Next</button>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#menu li a').click(function () {
+                $('#menu li a').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+    </script>
+
+    <script>
+        document.querySelector('.contents2').addEventListener('mouseover', function () {
+            document.querySelector('.overlay').style.display = 'block';
+        });
+
+        document.querySelector('.contents2').addEventListener('mouseout', function () {
+            document.querySelector('.overlay').style.display = 'none';
+        });
+    </script>
+</body>
+
+</html>
